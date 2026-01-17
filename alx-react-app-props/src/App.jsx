@@ -6,7 +6,7 @@ import MainContent from "./components/MainContent.jsx";
 import Footer from "./components/Footer.jsx";
 import UserProfile from "./components/UserProfile.jsx";
 import ProfilePage from "./components/ProfilePage.jsx";
-import { UserContext } from "./components/UserContext.js";
+import UserContext from "./components/UserContext.js";
 function App() {
   const userData = {
     name: "Jane Doe",
