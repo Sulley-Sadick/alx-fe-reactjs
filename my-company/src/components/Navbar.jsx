@@ -5,7 +5,7 @@ const Navbar = function () {
     <>
       <header>
         <nav>
-          <ul>
+          <ul style={{ backgroundColor: "lightblue", display: "flex", justifyContent: "center", marginTop: "-0.1rem", padding: "1rem" }}>
             <li>
               <Link to={"/"}>Home</Link>
             </li>

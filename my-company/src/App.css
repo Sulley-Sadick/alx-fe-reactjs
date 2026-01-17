@@ -9,12 +9,6 @@ li {
   list-style: none;
 }
 
-nav {
-  background: lightblue;
-  margin-top: -1rem;
-  padding: 1rem;
-}
-
 ul {
   display: flex;
   align-items: center;
