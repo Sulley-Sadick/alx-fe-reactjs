@@ -12,11 +12,11 @@ export const Counter = function () {
   return (
     <div>
       <button style={buttonStyle} onClick={() => setCount(count + 1)}>
-        Increase{" "}
+        Increment{" "}
       </button>
       <button style={buttonStyle} onClick={() => setCount(count - 1)}>
         {" "}
-        Decrease{" "}
+        Decrement{" "}
       </button>
       <button style={buttonStyle} onClick={() => setCount(0)}>
         Reset{" "}
