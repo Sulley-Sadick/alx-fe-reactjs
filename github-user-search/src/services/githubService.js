@@ -5,8 +5,8 @@ const fetchUserData = async function (username) {
     const res = await axios.get(`https://api.github.com/users/${username}`);
 
     return res.data;
-  } catch (err) {
-    throw new Error("Looks like user not found", `cause ${err}`);
+  } catch {
+    throw new Error("Looks like we cant find the user");
   }
 };
 
