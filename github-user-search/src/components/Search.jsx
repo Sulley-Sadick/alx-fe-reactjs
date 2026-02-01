@@ -3,30 +3,41 @@ import fetchUserData from "../services/githubService";
 
 const SearchBar = function () {
   const [username, setUsername] = useState("");
+  const [location, setLocation] = useState("");
+  const [repoCount, setRepoCount] = useState(0);
   const [data, setData] = useState(null);
   const [statusMessage, setStatusMessage] = useState("");
 
   //   handle input reaction
   const handleSubmit = async (event) => {
+    // prevent default behavior of the browser
+    event.preventDefault();
+
+    //   stop code execution when username is empty(guard clause)
+    if (!username && !location && !repoCount) return;
+
+    setStatusMessage("Loading");
     try {
-      // prevent default behavior of the browser
-      event.preventDefault();
+      const queryParts = [];
 
-      //   stop code execution when username is empty(guard clause)
-      if (username === "") return;
+      if (username) queryParts.push(username);
+      if (location) queryParts.push(`location:${location}`);
+      if (repoCount) queryParts.push(`repo:>${+repoCount}`);
 
-      setStatusMessage("Loading");
+      const query = queryParts.join(" ");
 
       // get return data from fetchUserData functional component
-      setData(await fetchUserData(username));
+      const result = await fetchUserData(query);
+      setData(result);
 
       setStatusMessage("");
     } catch {
       setStatusMessage("Looks like we cant find the user");
     }
-
     // clear input field
     setUsername("");
+    setLocation("");
+    setRepoCount(0);
   };
 
   //   css styles
@@ -60,11 +71,13 @@ const SearchBar = function () {
         <input
           type="search"
           placeholder="Location..."
+          onChange={(e) => setLocation(e.target.value)}
           style={{ padding: "0.5rem" }}
         />
         <input
           type="search"
           placeholder="Repositories"
+          onChange={(e) => setRepoCount(e.target.value)}
           style={{ padding: "0.5rem" }}
         />
 
@@ -72,22 +85,28 @@ const SearchBar = function () {
           Submit
         </button>
       </form>
-      <div>
-        <p className="data_paragraph">{statusMessage} </p>
-        {data && (
-          <>
-            <p>{data.login}</p>
-            <img
-              src={data.avatar_url}
-              alt={data.avatar_url}
-              style={{ borderRadius: "0.5rem" }}
-            />
-            <a href={data.html_url} target="_blank">
-              Github Link
-            </a>
-          </>
-        )}
-      </div>
+      <p className="data_paragraph">{statusMessage} </p>
+      {data &&
+        data.items.map((item) => {
+          return (
+            <div key={item.id}>
+              <p>{item.login}</p>
+              <img
+                src={item.avatar_url}
+                alt={item.avatar_url}
+                style={{ borderRadius: "0.5rem", width: "50%" }}
+              />
+              <p>{item.location}</p>
+              <a
+                href={item.html_url}
+                target="_blank"
+                style={{ display: "block" }}
+              >
+                Github Link
+              </a>
+            </div>
+          );
+        })}
     </>
   );
 };

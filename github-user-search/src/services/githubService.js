@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const fetchUserData = async function (username) {
+const fetchUserData = async function (query) {
   try {
-    const res = await axios.get(`https://api.github.com/users/${username}`);
+    const res = await axios.get(
+      `https://api.github.com/search/users?q=${query}`,
+    );
 
     return res.data;
   } catch {

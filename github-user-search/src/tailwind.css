@@ -1,5 +1,8 @@
 /*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
 @layer properties;
+.block {
+  display: block;
+}
 .flex {
   display: flex;
 }
