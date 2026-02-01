@@ -12,7 +12,6 @@ const fetchUserData = async function (username, location, minRepos) {
 
     const query = queryParts.join(" ");
 
-    console.log(query);
     const res = await axios.get(
       `https://api.github.com/search/users?q=${query}`,
     );

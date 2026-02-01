@@ -23,8 +23,6 @@ const SearchBar = function () {
       const result = await fetchUserData(username, location, +minRepos);
       setData(result);
 
-      console.log(result);
-
       data.items.length === 0
         ? message("Looks like we cant find the user")
         : message("");
