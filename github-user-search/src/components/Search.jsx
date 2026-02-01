@@ -4,40 +4,37 @@ import fetchUserData from "../services/githubService";
 const SearchBar = function () {
   const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
-  const [repoCount, setRepoCount] = useState(0);
+  const [minRepos, setMinRepos] = useState(0);
   const [data, setData] = useState(null);
   const [statusMessage, setStatusMessage] = useState("");
+
+  const message = function (msg) {
+    setStatusMessage(msg);
+  };
 
   //   handle input reaction
   const handleSubmit = async (event) => {
     // prevent default behavior of the browser
     event.preventDefault();
 
-    //   stop code execution when username is empty(guard clause)
-    if (!username && !location && !repoCount) return;
-
-    setStatusMessage("Loading");
+    message("Loading");
     try {
-      const queryParts = [];
-
-      if (username) queryParts.push(username);
-      if (location) queryParts.push(`location:${location}`);
-      if (repoCount) queryParts.push(`repo:>${+repoCount}`);
-
-      const query = queryParts.join(" ");
-
       // get return data from fetchUserData functional component
-      const result = await fetchUserData(query);
+      const result = await fetchUserData(username, location, +minRepos);
       setData(result);
 
-      setStatusMessage("");
+      console.log(result);
+
+      data.items.length === 0
+        ? message("Looks like we cant find the user")
+        : message("");
     } catch {
-      setStatusMessage("Looks like we cant find the user");
+      message("Looks like we cant find the user");
     }
     // clear input field
     setUsername("");
     setLocation("");
-    setRepoCount(0);
+    setMinRepos("");
   };
 
   //   css styles
@@ -77,7 +74,7 @@ const SearchBar = function () {
         <input
           type="search"
           placeholder="Repositories"
-          onChange={(e) => setRepoCount(e.target.value)}
+          onChange={(e) => setMinRepos(e.target.value)}
           style={{ padding: "0.5rem" }}
         />
 
