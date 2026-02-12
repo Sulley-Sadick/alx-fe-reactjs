@@ -19,7 +19,7 @@ function HomePage(){
     
 
         return (items && items.map(item=> {                            
-        return <div key={item.id} className="gap-4 mt-4 p-4 grid grid-cols-1 sm:grid-cols-2 sm:items-center">
+        return <div key={item.id} className="gap-4 mt-4 p-4 grid grid-cols-1 sm:grid-cols-3 sm:items-center">
             <img src={item.image} alt={item.title} className="rounded-md shadow-md  duration-300 hover:skew-x-12 hover:cursor-grab"/>
             <h2 className="text-2xl">{item.title}</h2>
             <p>{item.summary}</p>
