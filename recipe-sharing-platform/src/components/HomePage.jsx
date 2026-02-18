@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import data from '../data.json'
 
 function HomePage(){
-    const [items, setItems] = useState([]);
-
+    const [recipes, setRecipes] = useState([]);
 
     useEffect(()=> {
         const fetchData = async function(){
             await new Promise(resolve=> setTimeout(resolve, 500));
 
-            
-            setItems(data)            
+            setRecipes(data)            
         }
         
         fetchData()
@@ -18,13 +18,16 @@ function HomePage(){
     }, [])
     
 
-        return (items && items.map(item=> {                            
-        return <div key={item.id} className="gap-4 mt-4 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 sm:items-center">
-            <img src={item.image} alt={item.title} className="rounded-md shadow-md  duration-300 hover:skew-x-12 hover:cursor-grab w-full  min-h-full" />
-            <h2 className="text-2xl">{item.title}</h2>
-            <p>{item.summary}</p>
-        </div>
-        })         
+        return (
+            <div className="gap-4 mt-4 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                {recipes.map(recipe=> (
+                <div key={recipe.id}>
+                <Link to={`/recipe/${recipe.id}`}><img src={recipe.image} alt={recipe.title} className="rounded-md shadow-lg  duration-300 hover:skew-x-12 hover:cursor-pointer w-full  min-h-full mt-2" /></Link>
+                <h2 className="text-2xl">{recipe.title}</h2>
+                <p>{recipe.summary}</p>
+                </div>
+            ))}
+            </div>
     )
 }
 
