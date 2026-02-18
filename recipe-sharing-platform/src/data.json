@@ -3,12 +3,21 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/150",
+    "ingredients": ["pasta", "Guanciale", "Black Pepper", "Pecorino Romano"],
+    "instructions": "Preparing a chicken spaghetti carbonara involves creating a creamy sauce from eggs, Parmesan cheese, and pasta water, combined with pan-seared chicken and crispy bacon. It typically takes about 20–30 minutes to prepare. "
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "Boneless, Skinless Chicken Thighs",
+      "Full-Flat Plain Yorgurt",
+      "Garam Masala",
+      "Tomato Puree"
+    ],
+    "instructions": "Preparing chicken tikka masala involves marinating chicken in yogurt and spices, searing it for a smoky flavor, and simmering it in a creamy, tomato-based sauce. It is best made with chicken thighs for maximum tenderness, with a recommended marination time of 3 hours to overnight."
   }
 ]

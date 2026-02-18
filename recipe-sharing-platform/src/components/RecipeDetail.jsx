@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import data from '../data.json'
 
 
@@ -6,16 +7,33 @@ function RecipeDetails (){
 
     const {id} = useParams();
 
-    // converted the id into a number using the (+) operator instead of parseInt
-    const recipe = data.find(item=> item.id === +id)
+    const [recipe, setRecipe] = useState('')
 
-    if(!recipe)return <p>Recipe not found</p>
+    useEffect(()=> {
+        const fetchData = async function(){
+            await new Promise(resolve=> setTimeout(resolve, 500));
+
+            setRecipe(data.find(item=> item.id === +id))            
+        }
+        
+        fetchData()
+        
+    }, [id])
+    
+        
+        if(!recipe)return <p>Recipe not found</p>
 
     return (
-            <div className='flex flex-col items-center' key={recipe.id}>
+            <div className='p-4' key={recipe.id}>
+                <h1 className='text-4xl my-2 text-center'>{recipe.title}</h1>
                 <img src={recipe.image} alt={recipe.title} />
-                <h2>{recipe.title}</h2>
                 <p>{recipe.summary}</p>
+                <ul>
+                    {recipe.ingredients.map((ing, index)=> (
+                        <li key={index}>{ing}</li>
+                    ))}
+                </ul>
+                <p>{recipe.instructions}</p>   
             </div>
         )
     
