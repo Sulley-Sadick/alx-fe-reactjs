@@ -24,9 +24,9 @@ function RecipeDetails (){
         if(!recipe)return <p>Recipe not found</p>
 
     return (
-            <div className='p-4' key={recipe.id}>
+            <div className='p-4 font-mono' key={recipe.id}>
                 <h1 className='text-4xl my-2 text-center'>{recipe.title}</h1>
-                <img src={recipe.image} alt={recipe.title} />
+                <img className='min-h-[10rem] max-w-[50rem] mx-auto shadow-[5px_3px_5px_rgba(0,0,0,0.7)] my-6' src={recipe.image} alt={recipe.title} />
                 <p>{recipe.summary}</p>
                 <ul>
                     {recipe.ingredients.map((ing, index)=> (
