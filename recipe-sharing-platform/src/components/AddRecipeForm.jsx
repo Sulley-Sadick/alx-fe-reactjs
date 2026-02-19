@@ -34,7 +34,7 @@ function AddRecipeForm(){
     
 
     return (
-        <form  onSubmit={handleSubmit} className="flex items-center flex-col gap-2">
+        <form  onSubmit={handleSubmit} className="flex items-center flex-col gap-2 shadow-md py-4">
 
             {errors && <p className="text-red-500">{errors}</p>}
 
@@ -42,7 +42,7 @@ function AddRecipeForm(){
             <input type="text" id="title" onChange={(e)=> setTitle(e.target.value)} className="input"/>
 
             <label htmlFor="ingredients">Ingredients:</label>
-            <textarea id="ingredients"onChange={(e)=> setIngredients(e.target.value)}  className="input"></textarea>
+            <textarea id="ingredients"onChange={(e)=> setIngredients(e.target.value)}  className="input" ></textarea>
 
             <label htmlFor="preparation steps">Preparation Steps:</label>
             <textarea id="preparation steps" onChange={(e)=> setPreparationSteps(e.target.value)}  className="input"></textarea>
