@@ -7,6 +7,7 @@ function AddRecipeForm(){
     const [ingredients, setIngredients] = useState('');
     const [preparationSteps, setPreparationSteps] = useState('');
     const [errors, setErrors] = useState('');
+    const [validate, setValidate] = useState(false);
 
     const handleSubmit  = (event)=> {
         // prevent browser default behavior
@@ -14,6 +15,7 @@ function AddRecipeForm(){
 
         if(!title  || !ingredients  || !preparationSteps){
             setErrors('Please fill out input fields!')
+            setValidate(false)
             return
         }
 
@@ -21,10 +23,12 @@ function AddRecipeForm(){
 
         if(allIngredients.length < 2){
             setErrors("Ingredients cannot be less than two items.")            
+            setValidate(false)
             return
         }
 
         setErrors('')        
+        setValidate(true)
         
     }
     
@@ -43,7 +47,7 @@ function AddRecipeForm(){
             <label htmlFor="preparation steps">Preparation Steps:</label>
             <textarea id="preparation steps" onChange={(e)=> setPreparationSteps(e.target.value)}  className="input"></textarea>
 
-            <button type="submit" className="bg-[#6400ed]  p-2 w-[26%]  flex justify-center items-center rounded-md text-white font-bold ">Submit</button>
+            <button type="submit" className="bg-[#6400ed]  p-2 w-[26%]  flex justify-center items-center rounded-md text-white font-bold" disabled={!validate}>Submit</button>
         </form>
     )
 
