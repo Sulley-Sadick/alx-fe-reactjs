@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import data from '../data.json'
 
 
+
 function RecipeDetails (){
 
     const {id} = useParams();
 
-    const [recipe, setRecipe] = useState('')
+    const [recipe, setRecipe] = useState(null)
 
     useEffect(()=> {
         const fetchData = async function(){
@@ -29,10 +30,12 @@ function RecipeDetails (){
                 <img className='min-h-[10rem] max-w-[50rem] mx-auto shadow-[5px_3px_5px_rgba(0,0,0,0.7)] my-6' src={recipe.image} alt={recipe.title} />
                 <p>{recipe.summary}</p>
                 <ul>
+                    <h3 className='text-center text-2xl my-2'>Ingredients</h3>
                     {recipe.ingredients.map((ing, index)=> (
                         <li key={index}>{ing}</li>
                     ))}
                 </ul>
+                <h3 className='text-center text-2xl my-2'>Instructions</h3>
                 <p>{recipe.instructions}</p>   
             </div>
         )
