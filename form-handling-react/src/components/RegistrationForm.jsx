@@ -9,9 +9,16 @@ function RegistrationForm() {
   const handleSubmit = function (e) {
     e.preventDefault();
 
-    if (!username || !email || !password) {
-      setErrors("Please fill out this field");
-      return;
+    if (!username) {
+      setErrors("Username is empty");
+    }
+
+    if (!email) {
+      setErrors("Email is empty");
+    }
+
+    if (!password) {
+      setErrors("Password is empty");
     }
 
     setErrors("");
