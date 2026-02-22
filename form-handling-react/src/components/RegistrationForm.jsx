@@ -9,13 +9,23 @@ function RegistrationForm() {
   const handleSubmit = function (e) {
     e.preventDefault();
 
-    if (!username && !email && !password) {
+    if (!username) {
       setErrors("Please fill out this field");
       return;
     }
 
-    setErrors("");
+    if (!email) {
+      setErrors("Please fill out this field");
+      return;
+    }
   };
+  if (!password) {
+    setErrors("Please fill out this field");
+    return;
+  }
+
+  setErrors("");
+
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       {errors && <p>{errors}</p>}
