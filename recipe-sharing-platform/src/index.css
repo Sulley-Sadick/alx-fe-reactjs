@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@layer components{
+    .input {@apply border border-black rounded-[2px] p-2 w-[26%] outline-none}
+}
