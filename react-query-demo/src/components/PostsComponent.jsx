@@ -9,7 +9,7 @@ const fetchPost = async () => {
 };
 
 function PostComponents() {
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({ queryKey: ["fetchPosts"], queryFn: fetchPost, staleTime: 1000 * 60 });
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({ queryKey: ["fetchPosts"], queryFn: fetchPost, staleTime: 1000 * 60, cacheTime: 1000 * 60 * 10, keepPreviousData: true, refetchOnWindowFocus: false });
 
   console.log("errorMessge", isError);
 
