@@ -5,6 +5,7 @@ import "./App.css";
 import ProfileDetails from "./components/ProfileDetails";
 import ProfileSettings from "./components/ProfileSettings";
 import BlogPost from "./components/BlogPost";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -15,6 +16,15 @@ function App() {
 
       <Routes>
         <Route path="/blog/:id" element={<BlogPost />} />
+        <Route
+          path="/profile/*"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/profile" element={<Profile />}>
           <Route index element={<p>Please select an option.</p>} />
           <Route path="ProfileDetails" element={<ProfileDetails />} />
