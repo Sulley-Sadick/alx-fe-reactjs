@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, Routes, Route } from "react-router-dom";
 
 function Profile() {
   return (
@@ -7,10 +7,10 @@ function Profile() {
 
       <ul>
         <li>
-          <Link to="/details">Profile Details</Link>
+          <Link to="/ProfileDetails">Profile Details</Link>
         </li>
         <li>
-          <Link to="/settings">Profile Settings</Link>
+          <Link to="/ProfileSettings">Profile Settings</Link>
         </li>
       </ul>
 
