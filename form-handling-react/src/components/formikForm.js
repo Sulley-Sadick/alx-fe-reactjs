@@ -7,7 +7,7 @@ const validateSchema = Yup.object({
   password: Yup.string("password most not be less than 10 characters").required("password is required"),
 });
 
-const FormikForm = () => (
+const formikForm = () => (
   <Formik initialValues={{ name: "", email: "", password: "" }} onSubmit={(data) => console.log(data)} validationSchema={validateSchema}>
     {() => (
       <Form style={{ display: "flex", justifyContent: "center", alignItems: "center", marginBlock: "1rem", flexDirection: "column" }}>
@@ -25,4 +25,4 @@ const FormikForm = () => (
   </Formik>
 );
 
-export default FormikForm;
+export default formikForm;
