@@ -12,6 +12,9 @@ function Profile() {
         <li>
           <Link to="/ProfileSettings">Profile Settings</Link>
         </li>
+        <li>
+          <Link to={`/blog/1`}>Blog Post</Link>
+        </li>
       </ul>
 
       <Outlet />
