@@ -1,9 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 
-function Dashboard() {
+function Profile() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Profile</h2>
 
       <ul>
         <li>
@@ -19,4 +19,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Profile;
