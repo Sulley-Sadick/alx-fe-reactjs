@@ -3,5 +3,5 @@ export default {
   transform: {
     "^.+\\.[jt]sx?$": "babel-jest",
   },
-  setupFilesAfterEnv: ["<rootDir>/src/components/setupTests.js"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
 };
