@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen, fireEvent, getByText } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import TodoList from "../components/TodoList";
 
 // TodoList component render correctly
-test("check TodoList component renders", () => {
+test("should render TodoList component", () => {
   render(<TodoList />);
 
   expect(screen.getByText("Do 120 pushups")).toBeInTheDocument();
@@ -11,7 +11,7 @@ test("check TodoList component renders", () => {
 });
 
 // new todo added test
-test("new to do can be added", () => {
+test("should add a new todo", () => {
   render(<TodoList />);
 
   const input = screen.getByPlaceholderText("Add Todo ...");
@@ -24,7 +24,7 @@ test("new to do can be added", () => {
 });
 
 // todo marked as completed
-test("todo completed", () => {
+test("should toggle a todo item completed", () => {
   render(<TodoList />);
 
   const todoItem = screen.getByText("Read Think Again by Adam Grant");

@@ -3,7 +3,7 @@ import { useState } from "react";
 const TodoItem = function ({ todo, toggleTodo, deleteTodo }) {
   return (
     <li style={{ listStyle: "none" }}>
-      <span style={{ textDecoration: todo.completed ? "line-through " : "none", cursor: "pointer" }} onClick={() => toggleTodo(todo.id)}>
+      <span style={{ textDecoration: todo.completed ? "line-through" : "none", cursor: "pointer" }} onClick={() => toggleTodo(todo.id)}>
         {todo.text}
       </span>
 
